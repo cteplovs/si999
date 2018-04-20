@@ -39,7 +39,8 @@
   <div class="reveal">
     <div class="slides">
       <div class="footer">
-        <small><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</small>      </div>
+        <small><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</small>
+      </div>
       <section>
         <h2>Big Data, Predictive Analytics and Deep Learning with Apache Spark</h2>
         <h4>Chris Teplovs, Ph.D.</h4>
@@ -61,62 +62,42 @@
             <h2>Day 1</h2>
             <table>
               <tr> <th>Segment</th><th>Topic</th> </tr>
-              <tr> <td>1.1</td><td>Introduction to Big Data</td> </tr>
+              <tr> <td>1.1</td><td>Workshop overview and Introductions</td> </tr>
               <tr> <td>1.2</td><td>Introduction to Databricks</td> </tr>
-              <tr> <td>1.3</td><td>Spark Overview</td> </tr>
-              <tr> <td>1.4</td><td>Spark DataFrames</td> </tr>
-              <tr> <td>1.5</td><td>Descriptive analyses</td> </tr>
-              <tr> <td>1.6</td><td>...</td></tr>
-              <tr> <td>1.7</td><td>...</td></tr>
-
+              <tr> <td>1.3</td><td>Hands-On: Databricks</td> </tr>
+              <tr> <td>1.4</td><td>Intro to Spark & DataFrames</td> </tr>
+              <tr> <td>1.5</td><td>Hands-On: DataFrames</td> </tr>
+              <tr> <td>1.6</td><td>Big Data Sets</td></tr>
+              <tr> <td>1.7</td><td>Hands-On: Exploring Data</td></tr>
             </table>
           </section>
           <section>
             <h2>Day 2</h2>
-
+            <table>
+              <tr> <th>Segment</th><th>Topic</th> </tr>
+              <tr> <td>2.1</td><td>Clustering Overview</td> </tr>
+              <tr> <td>2.2</td><td>k-Means and Bisecting k-Means</td> </tr>
+              <tr> <td>2.3</td><td>Hands-On: Clustering</td> </tr>
+              <tr> <td>2.4</td><td>Classification Overview</td> </tr>
+              <tr> <td>2.5</td><td>Hands-On: Classification</td> </tr>
+              <tr> <td>2.6</td><td>Model Evaluation and Tuning</td></tr>
+              <tr> <td>2.7</td><td>Hands-On: Evaluation and Tuning</td></tr>
+            </table>
+          </section>
+          <section>
+            <h2>Day 3</h2>
+            <table>
+              <tr> <th>Segment</th><th>Topic</th> </tr>
+              <tr> <td>3.1</td><td>Neural Nets and Deep Learning</td> </tr>
+              <tr> <td>3.2</td><td>Keras and Tensorflow</td> </tr>
+              <tr> <td>3.3</td><td>Hands-On: Deep Learning for image data</td> </tr>
+              <tr> <td>3.4</td><td>Hands-On: Deep Learning on other data</td> </tr>
+              <tr> <td>3.5</td><td>Hands-On: Data analysis</td> </tr>
+              <tr> <td>3.6</td><td>Group Presentations</td></tr>
+            </table>
           </section>
         </section>
-        <section>
-    This is my code
-    <pre><code>
-      import nltk
-      nltk.download('book')
-    </code></pre>
-</section>
-<section><h2>Random Forest Classifier</h2>
-<p>Create the trainer and set its parameters
-<pre><code>
-evaluator = MulticlassClassificationEvaluator(labelCol="indexed_species", predictionCol="prediction",
-                                                metricName="accuracy")
-iris_rf = RandomForestClassifier(labelCol="indexed_species",
-    featuresCol="features",
-    numTrees=10)
-</code></pre>
-<pre><code>
-iris_pipeline = Pipeline(stages=[iris_string_indexer, iris_assembler, iris_rf, iris_labelConverter])
 
-# Train the pipeline on the train dataset
-iris_model = iris_pipeline.fit(iris_train)
-
-# select example rows to display.
-iris_predictions = iris_model.transform(iris_test)
-
-# compute accuracy on the test set
-
-accuracy = evaluator.evaluate(iris_predictions)
-print("Test set accuracy = " + str(accuracy))
-
-# compute feature importance of each predictor
-featureImportances = pd.DataFrame({"index":df_iris.columns[:-1],"featureImportances":iris_model.stages[2].featureImportances})\
-  .sort_values("featureImportances", ascending=False)
-
-# visualize the feature importance using seaborn
-f, ax = plt.subplots(figsize=(12, 7))
-sns.set(style="darkgrid")
-sns.barplot(y="index",x="featureImportances",data=featureImportances)
-
-display(f.figure)
-  </code></pre>
       </div>
     </div>
 
