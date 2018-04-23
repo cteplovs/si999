@@ -440,7 +440,9 @@ df.groupBy("stars").count().sort("stars",ascending=False).show()
 <section>
   <h2>when... otherwise</h2>
   <pre><code>import pyspark.sql.functions as F
-df.withColumn('good', F.when(df['score'] > 50,1).otherwise(0)).show()</code></pre>
+df.withColumn('good', F.when(df['score'] > 50,1) \
+  .otherwise(0)) \
+  .show()</code></pre>
 </section>
 <section>
   <h2>DataFrames can be joined</h2>
