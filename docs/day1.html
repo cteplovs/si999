@@ -1,0 +1,493 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Big Data Workshop</title>
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/um1.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!-- https://github.com/hakimel/reveal.js/issues/174 -->
+  <style>
+  .slides .header {
+    top: 0px;
+    right: 0px;
+  }
+  .slides .footer {
+    position: absolute;
+    bottom: 0px;
+    left: 20%;
+    text-align: center;
+    font-size: small;
+  }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <div class="footer">
+        <small><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.</small>
+      </div>
+
+      <section>
+        <h2>Big Data, Predictive Analytics and Deep Learning with Apache Spark</h2>
+        <h4>Chris Teplovs, Ph.D.</h4>
+        <h5>Day 1</h5>
+      </section>
+
+      <section>
+          <section>
+            <h2>Day 1 Overview</h2>
+            <table>
+              <tr> <th>Segment</th><th>Topic</th> </tr>
+              <tr> <td>1.1</td><td>Workshop overview and Introductions</td> </tr>
+              <tr> <td>1.2</td><td>Introduction to Databricks</td> </tr>
+              <tr> <td>1.3</td><td>Hands-On: Databricks</td> </tr>
+              <tr> <td>1.4</td><td>Intro to Spark & DataFrames</td> </tr>
+              <tr> <td>1.5</td><td>Hands-On: DataFrames</td> </tr>
+              <tr> <td>1.6</td><td>Big Data Sets</td></tr>
+              <tr> <td>1.7</td><td>Hands-On: Exploring Data</td></tr>
+            </table>
+          </section>
+        </section>
+        <section> <!-- Databricks -->
+          <section>
+            <h2>Introduction to Databricks</h2>
+          </section>
+          <section>
+            <h2>Why Databricks?</h2>
+            <ul>
+              <li>Consistent, predictable environment for this Workshop</li>
+              <li>free, 6GB AWS cluster (small but capable)</li>
+              <li>plays well with S3 (and other AWS services)</li>
+              <ul><li>we'll be using S3 to access data</li></ul>
+            </ul>
+          </section>
+          <section>
+            <img src="assets/databricks-home-page.png" alt="Databricks home page"/>
+          </section>
+          <section>
+            <img src="assets/databricks-choose-free-one.png" alt="Databricks choose edition"/>
+          </section>
+          <section>
+            <img src="assets/databricks-sign-up.png" alt="Databricks sign-up page"/>
+          </section>
+          <section>
+            <img src="assets/databricks-desktop.png" alt="Databricks desktop page"/>
+          </section>
+          <section>
+            <img src="assets/databricks-import-notebook.png" alt="Databricks import notebook"/>
+          </section>
+          <section>
+            <img src="assets/databricks-import-notebook-url.png" alt="Databricks import notebook"/>
+            Import the following URL: <a href="https://goo.gl/xoT2R7">https://goo.gl/xoT2R7</a>
+          </section>
+        </section>
+
+
+        <section>
+          <h2>Jupyter notebooks</h2>
+          <ul>
+            <li>open-source project</li>
+            <li>create and share code and documentation</li>
+            <li>supports many languages: we will be using python</li>
+            <li>we will also be using Markdown functionality</li>
+            <li>part of the <a href="https://www.pydata.org">"Pydata"</a> stack</li>
+            <li>based around interactive, literate and reproducible computing</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>From Python to Databricks notebooks</h2>
+          <ol>
+            <li>Python</li>
+            <li>IPython</li>
+            <li>Jupyter</li>
+            <li>Databricks</li>
+          </ol>
+          <p>Note: see also <a href="https://zeppelin.apache.org/">Zeppelin</a>
+            notebooks.</p>
+        </section>
+        <section>
+          <h2>Scripts vs. Notebooks</h2>
+          <ul>
+            <li>different mindset</li>
+            <li>scripts: end-to-end program, often well-factored</li>
+            <li>notebooks:
+              <ul>
+                <li>code fragments</li>
+                <li>good for data exploration</li>
+                <li>cells can be run out of sequence</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Databricks notebooks</h2>
+          <ul>
+            <li>Jupyter-like notebook that is tuned for Spark
+              (more on that soon)</li>
+            <li>Note "Run cell" functionality (Shift-Enter) as well as
+              "Run all" </li>
+            <li>Remember: the notebook instance is running on a (modest)
+              AWS cluster</li>
+          </ul>
+        </section>
+        <section><h2>Data Collection Survey</h2><a href="https://umich.qualtrics.com/jfe/form/SV_3JBVoyZzHYms5KJ"><img src="assets/workshop-survey-qrcode.png"/><br/>https://umich.qualtrics.com/jfe/form/SV_3JBVoyZzHYms5KJ</a></section>
+<!-- LUNCH BREAK -->
+
+<section>
+<h2>Spark</h2>
+</section>
+<section><h2>Distributed Computing</h2>
+<ul>
+  <li>vertical vs. horizontal scaling</li>
+  <li>what's your limit?</li>
+  <li>computing time (weeks? days? minutes?)</li>
+</ul>
+</section>
+<section>
+  <h2>Key requirements of distributed systems</h2>
+  <ul>
+    <li>Fault tolerance</li>
+    <li>Recoverability</li>
+    <li>Consistency</li>
+    <li>Scalability</li>
+  </ul>
+</section>
+<section>
+<h2>MapReduce</h2>
+  <p>A different way of thinking about solving problems</p>
+<ul>
+  <li>dividing a big problem into smaller steps</li>
+  <li>those steps can proceed in parallel (i.e. independently)</li>
+  <li>the results of those steps can be combined efficiently</li>
+</ul>
+</section>
+<section>
+  <h2>An example: adding numbers</h2>
+</section>
+<section>
+  <h2>An example: adding numbers</h2>
+<pre>
+
+32 + 12 + 23 + 4 + 7 + 21 + 19 + 32 + 3 + 11 + 88 + 23 + 1 + 93 + 5 + 28 = ?
+
+</pre>
+</section>
+<section>
+  <h2>An example: adding numbers</h2>
+<pre>
+
+32 + 12 + 23 + 4 + 7 + 21  = ?
+19 + 32 + 3 + 11 + 88      = ?
+23 + 1 + 93 + 5 + 28       = ?
+                          ------
+                             ?
+
+</pre>
+</section>
+<section>
+  <h2>MapReduce</h2>
+  <img src="assets/map-reduce.png"/>
+</section>
+<section>
+  <h2>MapReduce</h2>
+  <img src="assets/map-reduce-details.png"/>
+</section>
+<section>
+  <h2>Another example: counting words</h2>
+<pre>
+  Deer Bear Car
+  Car Car River
+  Deer Car Bear
+</pre>
+</section>
+<section>
+  <h2>MapReduce</h2>
+  <img src="assets/map-reduce-example.png"/>
+</section>
+<section>
+  <h2>MapReduce: conditions</h2>
+  <ul>
+    <li>data are row-based</li>
+    <li>manipulation of each row is independent of the manipulation of
+      other rows</li>
+    <li>manipulations can be easily combined</li>
+  </ul>
+</section>
+<section><h2>MapReduce Keys</h2>
+  <ul>
+    <li>keys are <em>not</em> unique</li>
+    <li>used to combine (reduce) elements with the same key</li>
+    <li>contrast to python dictionaries, in which keys are unique</li>
+  </ul>
+</section>
+<section>
+<h2>Typical MapReduce Workflow</h2>
+<ul>
+<li>read (a lot of?) lines of data</li>
+<li>optionally split the lines into units of analysis (e.g. words)</li>
+<li>map each unit of analysis to a key-value pair (usually a tuple)
+  (e.g. (word, 1))</li>
+<li>reduce the tuples by some operation like addition</li>
+<li>emit (e.g. print) the reduced values</li>
+</ul>
+</section>
+<section>
+  <h2>Spark</h2>
+  <ul>
+    <li>Spark is a "general-purpose distributed computing abstraction"</li>
+    <li>focus on computation (rather than storage)</li>
+    <li>provides an interactive shell (PySpark)</li>
+    <li>good IPython and Jupyter integration</li>
+    <li>all about parallelization</li>
+    <li>very "lazy"</li>
+  </ul>
+</section>
+<section>
+<h2>Spark</h2>
+<ul>
+  <li>up to 100x fast than Hadoop MapReduce</li>
+  <li>written in Scala, providin Scala, Java and Python APIs</li>
+  <li>support batch and real-time processing</li>
+  <li>write once, run many places: Hadoop, Mesos, standalone, cloud, etc.</li>
+  <li>one of the most active Apache Software Foundation projects</li>
+  <li>not just for Big Data!</li>
+</ul>
+</section>
+
+<section>
+  <h2>Spark</h2>
+  <img src="assets/spark-stack.png"/>
+</section>
+<section>
+  <h2>Spark APIs</h2>
+  <ul>
+    <li>Resilient Distributed Datasets (RDDs)</li>
+    <li>DataSets</li>
+    <li>DataFrames</li>
+  </ul>
+</section>
+<section>
+  <h2>Resilient Distributed Datasets (RDDs)</h2>
+  <li>relatively low-level</li>
+  <li>direct access to mapping, reducing, sorting, etc.</li>
+  <li>commonly used by data professionals</li>
+  <li>not our focus for this workshop</li>
+</section>
+<section>
+  <h2>DataSets</h2>
+  <ul>
+    <li>distributed collection of data</li>
+    <li>only available via Scala or Java (i.e. no Python API)</li>
+    <li>not our focus for this workshop</li>
+  </ul>
+</section>
+<section>
+  <h2>Spark DataFrames</h2>
+  <ul>
+    <li>our main focus will be Spark DataFrames</li>
+    <li>DataFrames are Spark DataSets organized into rows and columns</li>
+    <li>on other words, they're <em>tables</em></li>
+    <li>conceptually very similar to pandas and R DataFrames</li>
+  </ul>
+</section>
+<section>
+  <h2>DataFrames: Getting Started</h2>
+  <ul>
+    <li>all interaction os via a SparkSession object</li>
+    <li>SparkSession == entry point to programming with Spark DataFrames</li>
+    <li>represents an abstract connection to a computing back-end (and more!)</li>
+    <li>Databricks provides a SparkSession in a variable called
+      <code>spark</code></li>
+
+  </ul>
+</section>
+<section>
+  <h2>Creating Spark DataFrames</h2>
+  <p>Once you have a SparkSession (reminder: variable <code>spark</code>
+    in Databricks is a SparkSession), a DataFrame can be created from:
+  <ul>
+    <li>a list</li>
+    <li>an RDD</li>
+    <li>a JSON file</li>
+  </ul>
+</section>
+<section>
+  <h2>Creating a DataFrame from a list</h2>
+  <p>If using a list of tuples, include a list of column names; if using
+  a list of values, specify value type:</p>
+  <pre><code>df_from_other_list = spark.createDataFrame(
+    [('Chris',67),('Frank',70)], [‘name','score'])
+df_from_other_list.show()
+
+from pyspark.sql.types import FloatType
+df_from_list = spark.createDataFrame(
+    [1.0,2.0,3.0,4.0,5.0], FloatType())
+df_from_list.show()
+</code></ore>
+</section>
+<section>
+  <h2>Create a DataFrame from a JSON file</h2>
+  <pre><code># read a specially formatted JSON file (one JSON object per line)
+df = spark.read.json("business.json")
+# Displays the content of the DataFrame to stdout
+df.show()</code></pre>
+</section>
+<section>
+  <h2>Inferring Schema</h2>
+  <pre><code> df.printSchema()</code></pre>
+  <pre>root
+ |-- address: string (nullable = true)
+ |-- attributes: struct (nullable = true)
+ |    |-- AcceptsInsurance: boolean (nullable = true)
+ |    |-- AgesAllowed: string (nullable = true)
+ |    |-- Alcohol: string (nullable = true)
+ |    |-- Ambience: struct (nullable = true)
+ |    |    |-- casual: boolean (nullable = true)
+ |    |    |-- classy: boolean (nullable = true)
+ |    |    |-- divey: boolean (nullable = true)
+ |    |    |-- hipster: boolean (nullable = true)
+ |    |    |-- intimate: boolean (nullable = true)
+ |    |    |-- romantic: boolean (nullable = true)
+ |    |    |-- touristy: boolean (nullable = true)
+ |    |    |-- trendy: boolean (nullable = true)
+ |    |    |-- upscale: boolean (nullable = true)
+ |    |-- BYOB: boolean (nullable = true)
+</pre>
+</section>
+<section>
+  <h2>Creating a DataFrame from a file</h2>
+  <p>Spark can load a number of different formats: json,  parquet, jdbc, orc, libsvm, csv, text
+</p>
+<pre><code>df = spark.read.load("examples/src/main/resources/people.json", format=“json")</code></pre>
+</section>
+<section>
+  <h2>Column selection</h2>
+  <code><pre>df.select("name").show()</pre></code>
+<pre>+--------------------+
+|                name|
++--------------------+
+|    Dental by Design|
+| Stephen Szabo Salon|
+|Western Motor Veh...|
+|    Sports Authority|
+|Brick House Taver...|
+|             Messina|
+...
+only showing top 20 rows
+</pre>
+</section>
+<section>
+  <h2>Filtering</h2>
+  <pre><code># Select businesses with 4 or more stars
+df.filter(df['stars'] >= 4).show()</code></pre>
+</section>
+<section>
+  <h2>Grouping and sorting</h2>
+  <pre><code># Count businesses by stars
+df.groupBy("stars").count().show()</code></pre>
+<pre><code># Count businesses by stars and sort the output
+df.groupBy("stars").count().sort("stars",ascending=False).show()
+</code></pre>
+</section>
+<section>
+  <h2>Explode</h2>
+  <pre><code>df = spark.createDataFrame([('Chris',[67,42]),('Frank',[70,72])],['name','scores'])
+  df.show()</code></pre>
+<pre>
+  +-----+--------+
+  | name| scores|
+  +-----+--------+
+  |Chris|[67, 42]|
+  |Frank|[70, 72]|
+  +-----+--------+</pre>
+</section>
+<section>
+  <h2>Explode</h2>
+  <pre><code>df = df.withColumn('score',explode('scores')).show()
+</code></pre>
+<pre>
++-----+--------+-----+
+| name| scores |score|
++-----+--------+-----+
+|Chris|[67, 42]| 67  |
+|Chris|[67, 42]| 42  |
+|Frank|[70, 72]| 70  |
+|Frank|[70, 72]| 72  |
++-----+--------+-----+</pre>
+</section>
+<section>
+  <h2>when... otherwise</h2>
+  <pre><code>import pyspark.sql.functions as F
+df.withColumn('good', F.when(df['score'] > 50,1).otherwise(0)).show()</code></pre>
+</section>
+<section>
+  <h2>DataFrames can be joined</h2>
+  <img src="assets/spark-dataframe-joins.png"/>
+</section>
+<section>
+  <h2>SQL Joins</h2>
+  <img src="assets/sql-joins.png"/>
+</section>
+<section>
+  <h2>SQL without a "real" database</h2>
+  <ul>
+    <li>How about a SQL interface to your data (without actually loading the data into a database)?</li>
+
+  </ul>
+  <pre><code>df.createOrReplaceTempView("businesses")
+    sqlDF = spark.sql("SELECT * FROM businesses")
+    sqlDF.show()</code></pre>
+</section>
+<section>
+  <h2>SQL Review</h2>
+  <pre><code>SELECT [Columns] FROM [Tables]
+    WHERE [Filter Condition]
+    ORDER BY [Sort Columns]
+</section>
+<section>
+  <h2>Break!</h2>
+</section>
+<section>
+  <h2>Big Data Sets for the Workshop</h2>
+</section>
+<section>
+  <h2>Exploring your data</h2>
+</section>
+      </div> <!-- slides -->
+    </div> <!-- reveal -->
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      transition: 'none', // none/fade/slide/convex/concave/zoom
+      dependencies: [
+        { src: 'plugin/markdown/marked.js' },
+        { src: 'plugin/markdown/markdown.js' },
+        { src: 'plugin/notes/notes.js', async: true },
+        { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+      ]
+    });
+    </script>
+  </body>
+  </html>
