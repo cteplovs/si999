@@ -376,9 +376,11 @@ df.show()</code></pre>
 </section>
 <section>
   <h2>Creating a DataFrame from a file</h2>
-  <p>Spark can load a number of different formats: json,  parquet, jdbc, orc, libsvm, csv, text
+  <p>Spark can load a number of different formats: json,  parquet, jdbc, 
+    orc, libsvm, csv, text
 </p>
-<pre><code>df = spark.read.load("examples/src/main/resources/people.json", format=“json")</code></pre>
+<pre><code>df = spark.read.load("examples/src/main/resources/people.json",
+  format=“json")</code></pre>
 </section>
 <section>
   <h2>Column selection</h2>
