@@ -97,7 +97,7 @@
           </section>
         </section>
 
-
+        <section>
         <section>
           <h2>Jupyter notebooks</h2>
           <ul>
@@ -146,12 +146,12 @@
               AWS cluster</li>
           </ul>
         </section>
+      </section>
+
         <section><h2>Data Collection Survey</h2><a href="https://umich.qualtrics.com/jfe/form/SV_3JBVoyZzHYms5KJ"><img src="assets/workshop-survey-qrcode.png"/><br/>https://umich.qualtrics.com/jfe/form/SV_3JBVoyZzHYms5KJ</a></section>
 <!-- LUNCH BREAK -->
-
+<section><h2>Break!</h2></section>
 <section>
-<h2>Spark</h2>
-</section>
 <section><h2>Distributed Computing</h2>
 <ul>
   <li>vertical vs. horizontal scaling</li>
@@ -247,6 +247,8 @@
 <li>emit (e.g. print) the reduced values</li>
 </ul>
 </section>
+</section>
+<section>
 <section>
   <h2>Spark</h2>
   <ul>
@@ -274,6 +276,8 @@
   <h2>Spark</h2>
   <img src="assets/spark-stack.png"/>
 </section>
+</section>
+<section>
 <section>
   <h2>Spark APIs</h2>
   <ul>
@@ -310,6 +314,8 @@
     <li>conceptually very similar to pandas and R DataFrames</li>
   </ul>
 </section>
+</section>
+<section>
 <section>
   <h2>DataFrames: Getting Started</h2>
   <ul>
@@ -444,6 +450,8 @@ df.withColumn('good', F.when(df['score'] > 50,1) \
   .otherwise(0)) \
   .show()</code></pre>
 </section>
+</section>
+<section>
 <section>
   <h2>DataFrames can be joined</h2>
   <img src="assets/spark-dataframe-joins.png"/>
@@ -468,15 +476,66 @@ df.withColumn('good', F.when(df['score'] > 50,1) \
     WHERE [Filter Condition]
     ORDER BY [Sort Columns]</pre></code>
 </section>
+</section>
 <section>
   <h2>Break!</h2>
 </section>
 <section>
-  <h2>Big Data Sets for the Workshop</h2>
+<section>
+  <h2>Exploring data</h2>
 </section>
 <section>
-  <h2>Exploring your data</h2>
+  <h2>Data Sets for the Workshop</h2>
+  <table>
+    <tr>
+      <th>Name</th><th>Description</th><th>Size</th>
+    </tr>
+    <tr>
+      <td>Workshop survey</td><td>What you filled in</td><td>look around</td>
+    <tr>
+      <td>Bob Ross images</td><td>A collection of tags and images from the famed painter.</td><td>438 images</td>
+    </tr>
+    <tr>
+      <td>Yelp</td><td>Businesses, reviews, and user data</td><td>~20 GB</td>
+    </tr>
+
+<!--
+<tr>
+  <td>Enron emails</td><td></td><td></td>
+</tr>
+-->
+<!--
+<tr>
+  <td>Reddit</td><td></td><td></td>
+</tr>
+<tr>
+  <td>Flight On-Time Performance</td><td>TBD</td><td>TBD</td>
+</tr>
+-->
+  </table>
+  We will be using Bob Ross for our examples, and Yelp for our hands-on sessions.
 </section>
+
+<section>
+  <h2>The Yelp Dataset</h2>
+  <ol>
+  <li>First things first: <a href="https://www.yelp.com/dataset">agree to usage
+     terms and conditions</a>
+  (but don't download it).</li>
+  <li>Import the Yelp exploration notebook.</li>
+  </ol>
+</section>
+<section>
+  <h2>The Yelp Dataset</h2>
+  <p>Work in your teams to</p>
+  <ol>
+    <li>Get a sense of which cities/regions/etc. are available</li>
+    <li>Select one (e.g. Las Vegas)</li>
+    <li>Use Spark SQL to get some descriptive facts about your selection.</li>
+  </ol>
+
+</section>
+</sectiom>
       </div> <!-- slides -->
     </div> <!-- reveal -->
 
