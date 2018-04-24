@@ -318,6 +318,173 @@ End Loop
           <section>
             <h2>To the notebook!</h2>
           </section>
+<section>
+  <h2>Break!</h2>
+</section>
+<!-- LUNCH -->
+<section>
+  <h2>Classification</h2>
+  <ul>
+    <li>classification and classification types</li>
+    <li>algorithms
+<ul>
+  <li>Naive Bayes</li>
+  <li>Decision Tree</li>
+  <li>Random Forest</li>
+</ul>
+    </li>
+    <li>Evaluation: Train/Test and Cross-Validation</li>
+  </ul>
+</section>
+<section>
+  <h2>Clustering vs. Classification</h2>
+  <ul>
+    <li>With clustering, we knew there was structure
+      (e.g. different types of people, etc.),
+      but we didn't know what the structure was</li>
+      <li>clustering is unsupervised</li>
+      <li>goal: find the structure</li>
+      <li>usually don't know which things go together in a cluster</li>
+      <li>may or may not know how many clusters</li>
+      <li>usually figure out what clusters mean after the fact</li>
+  </ul>
+</section>
+<section>
+  <h2>Clustering vs. Classification</h2>
+  <ul>
+    <li>Classification:</li>
+    <li>often supervised (or semi-supervised)</li>
+    <li>we know the labels of things (e.g. spam vs. non-spam, pop vs. classical)</li>
+    <li>computer "learns" rule(s) of where to put things</li>
+    <li>we don't know which features are best predictors of membership</li>
+    <li>usually know which things go together in a cluster</li>
+    <li>usually know how many clusters there are</li>
+    <li>usually know what the clusters "mean" in advance</li>
+  </ul>
+</section>
+<section>
+  <h2>Classification is about...</h2>
+  <ul>
+    <li>Answering or predicting something (Y) given an input (X):</li>
+    <li>Is X a Y (or not)? (e.g. is this email spam or not?)</li>
+    <li>What group (Y) does X belong to? (e.g. is this a forest or a mountain?)</li>
+    <li>What is the value of Y given X? (e.g. what grade should this student get?)</li>
+  </ul>
+</section>
+<section>
+  <h2>Classifiers work by...</h2>
+  <p>Being fed examples and learning how important certain features arises</p>
+</section>
+<section>
+  <h2>Classification workflow</h2>
+  <ol>
+    <li>Generate/obtain labels</li>
+    <li>Generate/obtain features</li>
+    <li>Select a classifier</li>
+    <li>Train classifier</li>
+    <li>Tune classifier</li>
+    <li>Test classifier</li>
+  </ol>
+</section>
+<section>
+  <h2>Getting labels</h2>
+  <ul>
+    <li>Painful, expensive, time-consuming</li>
+    <li>Often human labor</li>
+    <li>Can infer labels (e.g. predict gender by examining name of author)</li>
+    <li>Synthetic datasets</li>
+  </ul>
+</section>
+<section>
+  <h2>Features</h2>
+  <ul>
+    <li>Same ideas as in clustering</li>
+    <li>Some set of "descriptions" for an object: explicit and
+      inferred (calculated)</li>
+
+  </ul>
+</section>
+<section>
+  <h2>Clustering vs. Classification</h2>
+  <ul>
+    <li>Clustering tries to separate groups by using (dis)similarity</li>
+    <li>Classification tries to find important features for
+      distinguishing group membership</li>
+  </ul>
+</section>
+<section>
+  <h2>Some popular classifiers</h2>
+  <ul>
+    <li>k-Nearest Neighbor (kNN)</li>
+    <li>Logistic Regression</li>
+    <li>Naive Bayes</li>
+    <li>Decision Tree</li>
+    <li>Random forest</li>
+    <li>SVM</li>
+    <li>Neural Networks ("deep learning")</li>
+  </ul>
+</section>
+<section>
+  <h2>Our focus: Decision Trees and Random Forests</h2>
+</section>
+<section>
+  <h2>Decision Trees</h2>
+  <p>I'm thinking of an animal: ask me some yes/no questions.</p>
+</section>
+<section>
+  <h2>Decision Trees</h2>
+  <ul>
+    <li>Ask the question with the most valuable answer first</li>
+    <li>"If I knew the answer to this,
+      how much closer to the solution would I be?"</li>
+    <li>Solutions that divide the space 50/50 are better than
+      solutions that divide the space 98/2</li>
+  </ul>
+</section>
+<section>
+  <h2>INSERT DT VIS HERE</h2>
+</section>
+<section>
+  <h2>Decision Tree Advantages</h2>
+  <ul>
+    <li>easy to Interpret</li>
+    <li>prediction process is obvious</li>
+    <li>can handle mixed data types</li>
+  </ul>
+</section>
+<section>
+  <h2>Decision Tree Limitations</h2>
+  <ul>
+    <li>expensive to calculate</li>
+    <li>tendency to overfit</li>
+    <li>can get large</li>
+  </ul>
+</section>
+<section>
+  <h2>Random Forest</h2>
+  <ul>
+    <li>currently a favorite technique</li>
+    <li>can fix the problem of one tree by using many</li>
+    <li>various ways to randomize: pick different subsets of data,
+    pick different features</li>
+  </ul>
+</section>
+<section>
+  <h2>How do you visualize a random forest?</h2>
+  <img src="assets/bob-ross-forest.png" alt="">
+</section>
+<section>
+  <h2>Classification Summary</h2>
+  <ul>
+    <li>ubiquitous</li>
+    <li>possibly dangerous</li>
+    <li>good for when we know somerthing about the structure</li>
+    <li>same type of "pipeline" as clustering</li>
+  </ul>
+</section>
+<section>
+  <h2>To the notebook!</h2>
+</section>
       </div> <!-- slides -->
     </div> <!-- reveal -->
 
