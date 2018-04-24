@@ -467,8 +467,8 @@ df.withColumn('good', F.when(df['score'] > 50,1) \
 
   </ul>
   <pre><code>df.createOrReplaceTempView("businesses")
-    sqlDF = spark.sql("SELECT * FROM businesses")
-    sqlDF.show()</code></pre>
+sqlDF = spark.sql("SELECT * FROM businesses")
+sqlDF.show()</code></pre>
 </section>
 <section>
   <h2>SQL Review</h2>
