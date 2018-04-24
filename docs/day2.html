@@ -107,6 +107,217 @@
             <h2>A "good" clustering solution</h2>
             <img src="assets/clustering-good.png"/>
           </section>
+          <section>
+            <h2>Applications of Cluster Analysis</h2>
+            <ul>
+              <li>understanding
+              <ul>
+                <li>group related documents for browsing</li>
+                <li>group genes and proteins that have similar functionality</li>
+                <li>group stocks with similar price fluctuations</li>
+              </ul>
+            </li>
+            <li>summarization
+              <ul>
+                <li>reduce size of large data sets</li>
+              </ul>
+            </li>
+            </ul>
+          </section>
+          <section>
+            <h2>Cluster Analysis Workflow</h2>
+            <ol>
+              <li>Formulate the problem</li>
+              <li>Select a distance measure (optional)</li>
+              <li>Select a clustering procedure</li>
+              <li>Decide on number of clusters</li>
+              <li>Interpret and profile clusters</li>
+              <li>Assess validity of clustering</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Clustering: useful in exploratory data analysis</h2>
+            <ol>
+              <li>Data understanding: finding underlying factors, groups, structure</li>
+              <li>Data navigation: web search and browsing</li>
+              <li>Data reduction: create new nominal variables</li>
+              <li>Data smoothing: infer missing attributes from cluster neighbors</li>
+            </ol>
+          </section>
+          <section>
+            <h2>Clustering arises in many fields</h2>
+            <ul>
+              <li>Health
+                <ul>
+                  <li>DNA gene expression (e.g. cancer, immunomarkers)</li>
+                  <li>Medical imaging
+                </ul>
+              </li>
+              <li>Business
+                <ul>
+                  <li>Market segments</li>
+                  <li>Web site visitors</li>
+                </ul>
+              </li>
+              <li>Social Network analysis
+                <ul>
+                  <li>Find communities</li>
+                </ul>
+              </li>
+              <li>Information retrieval
+              <ul>
+                <li>searh results clustered by similarity</li>
+                <li>personalization for groups of similar users</li>
+              </ul>
+              </li>
+              <li>Speech understanding
+                <ul>
+                  <li>convert waveforms to categories</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <section>
+              <h2>Finding the "best" clustering</h2>
+              <img src="assets/clustering-how-many.png" alt="how many clusters?">
+            </section>
+            <section>
+              <img src="assets/clustering-2.png" alt="">
+            </section>
+            <section>
+              <img src="assets/clustering-4.png" alt="">
+            </section>
+            <section>
+              <img src="assets/clustering-6.png" alt="">
+            </section>
+            <section>
+              <img src="assets/clustering-246.png" alt="">
+            </section>
+          </section>
+          <section>
+            <h2>Clustering algorithms</h2>
+            <ul>
+              <li>hard (objects belong to only 1 cluster) vs. soft (multiple membership)</li>
+              <li>hierarchical vs. non-hierarchical (flat)</li>
+              <li>agglomerative vs. divisive</li>
+            </ul>
+            <p>We will focus on flat and hierarchical divisive methods:
+              k-means and bisecting k-means</p>
+          </section>
+          <section>
+            <h2>FYI: Agglomerative Hierarchical</h2>
+            <ul>
+              <li>produces a set of nested clusters organized as a hierarchical tree</li>
+              <li>can be visualized as a dendrogram:</li>
+            </ul>
+          </section>
+          <section>
+            <img src="assets/clustering-sahn.png" alt="">
+          </section>
+          <section>
+            <h2>k-means clustering</h2>
+            <ul>
+              <li>divisive clustering</li>
+              <li>each cluster has a centroid (center point)</li>
+              <li>each point is  assigned to its nearest centroid</li>
+              <li>number of clusters (k) is specified in advance</li>
+            </ul>
+          </section>
+          <section>
+            <h2>k-means algorithm</h2>
+            <img src="assets/k-means-algorithm.png" alt="">
+          </section>
+          <section>
+            <h2>k-means iterations</h2>
+            <img src="assets/k-means-iterations.png" alt="">
+          </section>
+          <section>
+            <h2>k-means notables</h2>
+            <ul>
+              <li>different initializations of centroids can yield different results</li>
+              <li>centroid is typically the mean of the points in the cluster (c.f. medoids)</li>
+              <li>proximity can be measured by Euclidean distance, cosine similarity, correlation, Manhattan distance, etc.</li>
+              <li>computationally complex (relatively speaking)</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Limitations of k-means</h2>
+            <ul>
+              <li>k-means has problems when clusters are of differing sizes, densities, or are "oddly" shaped</li>
+              <li>outliers can cause problems</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Bisecting k-means</h2>
+            <ul>
+              <li>hierarchical divisive technique</li>
+              <li>uses k-means with k=2 at each iteration</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Bisecting k-means</h2>
+            <pre>
+Loop: until the stopping condition for the number of Clusters has
+      been reached
+     Loop: for every cluster         
+        - Measure the total error for the parent cluster in this
+          loop's iteration
+        - Apply K-Means Algorithm to the cluster with k=2
+        - Measure the total SSE error of the children clusters
+          compared to their parent cluster         
+        - Choose the cluster split that gives the lowest error and
+          commit this split     
+     End Loop
+End Loop
+</pre>
+          </section>
+          <section>
+            <h2>Relative Merits of Bisecting k-means</h2>
+            <ul>
+              <li>computationally efficient (k-2)</li>
+              <li>resulting clusters tend to be stable</li>
+
+            </ul>
+            <p>However. tends to produce different clusters than k-means.</p>
+          </section>
+          <section>
+            <h2>Clustering in Spark</h2>
+            <ul>
+              <li>Why spark?</li>
+              <li>Why not scikit-learn?</li>
+              <li>Why not R?</li>
+              <li>Why focus on k-means and bisecting k-means?</li>
+            </ul>
+          </section>
+          <section>
+            <h2>How many clusters?</h2>
+            <ul>
+              <li>Theoretical, conceptual or practical issues many suggest
+              a certain number of clusters</li>
+              <li>ratio of total within-group variance to between-group variance
+              vs. number of clusters</li>
+              <li>look for "elbow" in resulting plot</li>
+            </ul>
+          </section>
+          <section>
+            <h2>How many clusters?</h2>
+            <img src="assets/clustering-scree.png" alt="">
+          </section>
+          <section>
+            <h2>Good clusters?</h2>
+            <ul>
+              <li>stable across purturbations (different methods, e.g. distance metrics)</li>
+              <li>silhouette score (1 = good, -1 = really bad)</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Silhouette plot</h2>
+            <img src="assets/silhouette-plot.png" alt="">
+          </section>
+          <section>
+            <h2>To the notebook!</h2>
+          </section>
       </div> <!-- slides -->
     </div> <!-- reveal -->
 
