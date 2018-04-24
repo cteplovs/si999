@@ -328,6 +328,11 @@
   </ul>
 </section>
 <section>
+  <h2>
+<a href="https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/1101947090054953/1939366193503920/6387199866535941/latest.html">Notebook #1</a>
+  </h2>
+</section>
+<section>
   <h2>Creating Spark DataFrames</h2>
   <p>Once you have a SparkSession (reminder: variable <code>spark</code>
     in Databricks is a SparkSession), a DataFrame can be created from:
@@ -354,7 +359,7 @@ df_from_list.show()
 <section>
   <h2>Create a DataFrame from a JSON file</h2>
   <pre><code># read a specially formatted JSON file (one JSON object per line)
-df = spark.read.json("business.json")
+df = spark.read.json("/mnt/umsi-data-science/data/yelp/business.json")
 # Displays the content of the DataFrame to stdout
 df.show()</code></pre>
 </section>
