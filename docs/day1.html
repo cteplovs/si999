@@ -147,8 +147,9 @@
           </ul>
         </section>
       </section>
-
+<!--
         <section><h2>Data Collection Survey</h2><a href="https://umich.qualtrics.com/jfe/form/SV_3JBVoyZzHYms5KJ"><img src="assets/workshop-survey-qrcode.png"/><br/>https://umich.qualtrics.com/jfe/form/SV_3JBVoyZzHYms5KJ</a></section>
+      -->
 <!-- LUNCH BREAK -->
 <section><h2>Break!</h2></section>
 <section>
@@ -347,7 +348,7 @@
   <p>If using a list of tuples, include a list of column names; if using
   a list of values, specify value type:</p>
   <pre><code>df_from_other_list = spark.createDataFrame(
-    [('Chris',67),('Frank',70)], [‘name','score'])
+    [('Chris',67),('Frank',70)], ['name','score'])
 df_from_other_list.show()
 
 from pyspark.sql.types import FloatType
@@ -490,15 +491,27 @@ sqlDF.show()</code></pre>
   <h2>Exploring data</h2>
 </section>
 <section>
+  <h2>The Three Vs:</h2>
+<ul><li>Volume: not just sampling</li>
+<li>Velocity: real-time</li>
+<li>Variety: text, audio, images, video, etc.</li>
+</ul>
+</section>
+<section>
   <h2>Data Sets for the Workshop</h2>
   <table>
     <tr>
       <th>Name</th><th>Description</th><th>Size</th>
     </tr>
+    <!--
     <tr>
       <td>Workshop survey</td><td>What you filled in</td><td>look around</td>
     <tr>
+    -->
       <td>Bob Ross images</td><td>A collection of tags and images from the famed painter.</td><td>438 images</td>
+    </tr>
+    <tr>
+      <td>Spam email</td><td>Email messages that have been labelled as spam (or not)</td><td>?</td>
     </tr>
     <tr>
       <td>Yelp</td><td>Businesses, reviews, and user data</td><td>~20 GB</td>
@@ -518,7 +531,6 @@ sqlDF.show()</code></pre>
 </tr>
 -->
   </table>
-  We will be using Bob Ross for our examples, and Yelp for our hands-on sessions.
 </section>
 
 <section>
@@ -534,9 +546,10 @@ sqlDF.show()</code></pre>
   <h2>The Yelp Dataset</h2>
   <p>Work in your teams to</p>
   <ol>
-    <li>Get a sense of which cities/regions/etc. are available</li>
-    <li>Select one (e.g. Las Vegas)</li>
-    <li>Use Spark SQL to get some descriptive facts about your selection.</li>
+    <li>get a sense of which cities/regions/etc. are available</li>
+    <li>select one (e.g. Las Vegas)</li>
+    <li>use Spark SQL to get some descriptive facts about your selection.</li>
+    <li>turn real-world questions into Spark SQL queries</li>
   </ol>
 
 </section>
